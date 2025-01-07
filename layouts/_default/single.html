@@ -29,7 +29,8 @@
   {{ end }}
   {{ partial "cover.html" . }}
 
-  {{ if (.Params.Toc | default .Site.Params.Toc) }}
+  <!-- Add condition to show TOC only for posts -->
+  {{ if and (eq .Section "posts") (.Params.Toc | default .Site.Params.Toc) }}
     <div class="table-of-contents">
       <h2>
         {{ (.Params.TocTitle | default .Site.Params.TocTitle) | default "Table of Contents" }}
@@ -55,3 +56,4 @@
   {{ end }}
 </article>
 {{ end }}
+
